@@ -1,0 +1,240 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap");
+
+body {
+	font-family: "Roboto", Arial, Helvetica, sans-serif;
+	margin: 0;
+	background: #391b41;
+	background: linear-gradient(135deg, #391b41, #1f0f2a);
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+}
+
+.flex-center {
+	display: flex;
+	justify-content: center;
+}
+
+.header-center {
+	align-items: center;
+	flex-direction: column;
+	margin-top: 10%;
+}
+
+.left-margin {
+	margin: 0px 16px;
+}
+
+#sj-frame {
+	border: none;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	background-color: #391b41;
+}
+
+#sj-error {
+	color: #391b41 !important;
+	white-space: pre-wrap;
+}
+
+#sj-error-code {
+	font-size: 12px;
+	color: #fff;
+	font-family: "Courier New", Courier, monospace;
+}
+
+.logo {
+	height: 25vh;
+}
+
+.logo-wrapper .text {
+	font-size: 75px;
+	color: #fff;
+}
+
+.logo-wrapper img.logo {
+    max-height: 150px;
+    border-radius: 0px;
+    margin-bottom: 12px;
+}
+
+.logo-wrapper h1 {
+    font-size: 3rem;
+    margin: 0;
+    color: #fff;
+    letter-spacing: 1px;
+}
+
+
+footer {
+	margin: 0 16px;
+	margin-top: auto;
+	display: flex;
+	flex-direction: column;
+	line-height: 30px;
+	margin-bottom: 20px;
+}
+
+footer > div {
+	display: flex;
+	justify-content: left;
+	align-items: center;
+	flex-wrap: wrap;
+	margin-bottom: 15px;
+}
+
+footer a,
+footer span {
+	margin: 0 15px;
+	text-decoration: none;
+	color: #fff;
+	font-size: 15px;
+}
+
+footer a {
+	cursor: pointer;
+}
+
+footer a:hover {
+	text-decoration: underline;
+}
+
+.desc p {
+	width: 450px;
+	color: rgba(253, 253, 253, 0.514);
+}
+
+	#sj-address {
+		background: none;
+		font-family: inherit;
+		padding: 0px 17px;
+		height: 48px;
+		border: 1px solid rgb(255, 255, 255, 0.2);
+		color: var(--text-color);
+		border-radius: 3px;
+		outline: none;
+		width: 150px;
+		margin-top: 5px;
+		border-radius: 50px;
+		color: #fff;
+		transition: border-radius 0.1s;
+	}
+
+	#sj-address:focus {
+		border: 1px solid rgba(253, 253, 253, 0.514);
+		border-radius: 50px;
+	}
+
+.quick-launch {
+    display: flex;
+    gap: 16px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+
+.proxy-btn {
+    width: 200px;
+    height: 80px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.15s, filter 0.15s;
+}
+
+.proxy-btn:hover {
+    transform: translateY(-3px);
+    filter: brightness(1.2);
+}
+
+.proxy-btn[data-url*="nowgg"] {
+	background-image: url("nowgg.png");
+}
+
+.proxy-btn[data-url*="discord"] {
+	background-image: url("discord.png");
+}
+
+.proxy-btn[data-url*="github"] {
+	background-image: url("gthb.png");
+}
+
+
+.proxy-btn {
+	background-color: transparent;
+	border: none;
+	padding: 0;
+
+	width: 200px;
+	height: 80px;
+
+	cursor: pointer;
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+.proxy-btn#discord-btn {
+    	color: #fff;
+	width: 200px;
+	height: 80px;
+}
+
+
+button {
+    width: 125px;
+    height: 80px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.15s, filter 0.15s;
+		background-color: #c800ff;
+}
+
+
+#loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #391b41;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    opacity: 1;
+    transition: opacity 0.8s ease;
+}
+
+.spinner {
+    border: 6px solid rgba(255,255,255,0.2);
+    border-top: 6px solid #fff;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+body.loaded > *:not(#loading-screen) {
+    opacity: 0;
+    animation: fadeIn 1s ease forwards;
+    animation-delay: 0.5s;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}

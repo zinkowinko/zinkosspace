@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
+		/>
+		<title>zinkos space</title>
+
+		<link rel="shortcut icon" content="favicon.webp" />
+		<script src="/scram/scramjet.all.js"></script>
+		<script src="/baremux/index.js"></script>
+		
+		<link rel="stylesheet" href="index.css" />
+		<script src="register-sw.js" defer></script>
+		<script src="search.js" defer></script>
+		<script src="index.js" defer></script>
+	</head>
+
+	<div id="loading-screen">
+    <div class="spinner"></div>
+</div>
+
+	<body>
+		<div title="zinkos space" class="flex-center logo-wrapper header-center">
+			<img class="logo" src="sj.gif" alt="zinkos space" />
+			<h1>zinkos space</h1>
+		</div>
+		<div class="flex-center desc left-margin">
+			<p>
+				zinkos space is a web proxy for you to bypass web restrictions and browse the web freely.
+			</p>
+		</div>
+
+		<form id="sj-form" class="flex-center">
+			<input
+				id="sj-search-engine"
+				value="https://www.google.com/search?q=%s"
+				type="hidden"
+			/>
+			<input id="sj-address" type="text" placeholder="Search the web freely" />
+		</form>
+<div class="quick-launch flex-center">
+	<button class="proxy-btn" data-url="https://nowgg.fun"></button>
+	<button class="proxy-btn" data-url="https://discord.gg/EPkPQzhncW"></button>
+	<button class="proxy-btn" data-url="https://github.com"></button>
+</div>
+
+
+
+		<div class="desc left-margin">
+			<p id="sj-error"></p>
+			<pre id="sj-error-code"></pre>
+		</div>
+		<footer>
+		</footer>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const loadingDuration = 1500;
+	
+
+    setTimeout(() => {
+        const loadingScreen = document.getElementById("loading-screen");
+        loadingScreen.style.opacity = 0;
+        document.body.classList.add("loaded");
+
+        setTimeout(() => loadingScreen.remove(), 800);
+    }, loadingDuration);
+});
+</script>
+
+
+	</body>
+</html>

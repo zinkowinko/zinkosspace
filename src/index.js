@@ -9,9 +9,9 @@ import { scramjetPath } from "@mercuryworkshop/scramjet/path";
 import { libcurlPath } from "@mercuryworkshop/libcurl-transport";
 import { baremuxPath } from "@mercuryworkshop/bare-mux/node";
 
-import Greenlock from "greenlock-express";
-
 const publicPath = fileURLToPath(new URL("../public/", import.meta.url));
+
+// Wisp Configuration: Refer to the documentation at https://www.npmjs.com/package/@mercuryworkshop/wisp-js
 
 logging.set_level(logging.NONE);
 Object.assign(wisp.options, {
@@ -64,10 +64,17 @@ fastify.setNotFoundHandler((res, reply) => {
 
 fastify.server.on("listening", () => {
 	const address = fastify.server.address();
+
+	// by default we are listening on 0.0.0.0 (every interface)
+	// we just need to list a few
 	console.log("Listening on:");
 	console.log(`\thttp://localhost:${address.port}`);
 	console.log(`\thttp://${hostname()}:${address.port}`);
-	console.log(`\thttp://${address.family === "IPv6" ? `[${address.address}]` : address.address}:${address.port}`);
+	console.log(
+		`\thttp://${
+			address.family === "IPv6" ? `[${address.address}]` : address.address
+		}:${address.port}`
+	);
 });
 
 process.on("SIGINT", shutdown);
@@ -79,26 +86,11 @@ function shutdown() {
 	process.exit(0);
 }
 
-let port = parseInt(process.env.PORT || "80");
-if (isNaN(port)) port = 80;
+let port = parseInt(process.env.PORT || "");
+
+if (isNaN(port)) port = 8080;
 
 fastify.listen({
 	port: port,
 	host: "0.0.0.0",
-}, () => {
-	console.log(`Fastify listening on internal port ${port}`);
-});
-
-const greenlock = Greenlock.init({
-	packageRoot: process.cwd(),
-	configDir: "./greenlock.d",
-	maintainerEmail: "floppavr@gmail.com",
-	cluster: false
-});
-
-greenlock.ready((glx) => {
-	const httpsServer = glx.httpsServer(fastify.server);
-	httpsServer.listen(port, "0.0.0.0", () => {
-		console.log(`Fastify + Greenlock listening on port ${port} with HTTPS`);
-	});
 });
